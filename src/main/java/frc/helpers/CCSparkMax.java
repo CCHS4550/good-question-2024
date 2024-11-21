@@ -3,11 +3,14 @@ package frc.helpers;
 import com.revrobotics.RelativeEncoder;
 //import com.revrobotics.*;
 import com.revrobotics.SparkPIDController;
+
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
+
 import com.revrobotics.CANSparkMax;
 
 //Documention: https://codedocs.revrobotics.com/java/com/revrobotics/package-summary.html 
 
-public class CCSparkMax extends CANSparkMax{
+public class CCSparkMax extends Spark{
 
     private String name;
     private String shortName;
