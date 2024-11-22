@@ -25,10 +25,17 @@ public class Drivetrain extends SubsystemBase{
     private  CCSparkMax backRight = new CCSparkMax("BackRight", "BR", Constants.OperatorConstants.BRdeviceID,
                         MotorType.kBrushless,
                         IdleMode.kBrake, false);
-
+                   
+    public  DifferentialDrive diffDrive = new DifferentialDrive(
+        (double output) -> {
+            frontLeft.set(output);
+            backLeft.set(output);
+            },
+        (double output) -> {
+            frontRight.set(output);
+            backRight.set(output);
+        });
     
-
-    // DifferentialDrive diffDrive = new DifferentialDrive(frontLeft, frontRight);
     public void teleDrive(double moveSpeed, double turnSpeed){
         diffDrive.arcadeDrive(moveSpeed, turnSpeed);
      }

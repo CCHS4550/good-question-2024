@@ -21,8 +21,8 @@ public final class Constants {
     public static final int BLdeviceID = 0;
     public static final int BRdeviceID = 0;
     public static final int IMdeviceID = 0;
-    public static final int IntakeOneID = 0;
-    public static final int IntakeTwoID = 0;
+    public static final int IntakeTopID = 0;
+    public static final int IntakeBottomID = 0;
     public static final int ShooterOneID = 0;
     public static final int ShooterTwoID = 0;
     public static final boolean FLReverse = false;

@@ -8,7 +8,6 @@ import frc.helpers.ControlScheme;
 import frc.robot.subsystems.Drivetrain;
 public class driveScheme implements ControlScheme{
     private static CommandXboxController controller;
-
     public static void configure(Drivetrain driveTrain, int port){
         controller = new CommandXboxController(port);
         SlewRateLimiter xLimit = new SlewRateLimiter(0.5);
