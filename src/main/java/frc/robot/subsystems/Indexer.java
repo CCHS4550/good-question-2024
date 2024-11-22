@@ -8,12 +8,12 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.helpers.CCSparkMax;
-import frc.maps.Constants;
+import frc.robot.Constants;
+
 
 public class Indexer extends SubsystemBase{
-    private CCSparkMax indexerMotor = new CCSparkMax("indexMotor", "im", Constants.MotorConstants.INDEXER, MotorType.kBrushless,
-            IdleMode.kBrake, Constants.MotorConstants.INDEXER_REVERSED);
-    }
+    private CCSparkMax indexerMotor = new CCSparkMax("indexMotor", "im", Constants.OperatorConstants.IMdeviceID, MotorType.kBrushless,
+            IdleMode.kBrake, false);
     //methods
     public void setIndexerMotorForward() {
             indexerMotor.set(0.6);
@@ -28,6 +28,8 @@ public class Indexer extends SubsystemBase{
     public Command IndexerBackward(){
         return this.run(() -> setIndexerMotorReverse()); 
     }
+        }
+
 
 
 
