@@ -15,23 +15,23 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
-    public static final int kMechanismControllerPort = 0;
-    public static final int FLdeviceID = 0;
-    public static final int FRdeviceID = 0;
-    public static final int BLdeviceID = 0;
-    public static final int BRdeviceID = 0;
-    public static final int IMdeviceID = 0;
-    public static final int IntakeTopID = 0;
-    public static final int IntakeBottomID = 0;
-    public static final int ShooterOneID = 0;
-    public static final int ShooterTwoID = 0;
+    public static final int kMechanismControllerPort = 1;
+    public static final int FLdeviceID = 3;
+    public static final int FRdeviceID = 7;
+    public static final int BLdeviceID = 4;
+    public static final int BRdeviceID = 8;
+    public static final int IMdeviceID = 5;
+    public static final int IntakeTopID = 1;
+    public static final int IntakeBottomID = 2;
+    public static final int ShooterOneID = 6;
+    public static final int ShooterTwoID = 9;
     public static final boolean FLReverse = false;
     public static final boolean FRReverse = false;
     public static final boolean BLReverse = false;
     public static final boolean BRReverse = false;
     public static final boolean IMReverse = false;
     public static final boolean IntakeOneReverse = false;
-    public static final boolean IntakeTwoReverse = false;
+    public static final boolean IntakeTwoReverse = true;
     public static final boolean ShooterOneReverse = false;
     public static final boolean ShooterTwoReverse = false;
   }

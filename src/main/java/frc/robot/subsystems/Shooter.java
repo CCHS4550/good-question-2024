@@ -12,7 +12,7 @@ import frc.helpers.CCSparkMax;
 
 public class Shooter extends SubsystemBase{
     CCSparkMax lowerShooter = new CCSparkMax("lowerShooter", "ls", 0, MotorType.kBrushless, IdleMode.kCoast, false);
-    CCSparkMax upperShooter = new CCSparkMax("upperShooter", "us", 0, MotorType.kBrushless, IdleMode.kCoast, true);
+    CCSparkMax upperShooter = new CCSparkMax("upperShooter", "us", 0, MotorType.kBrushless, IdleMode.kCoast, false);
     
     private SlewRateLimiter shooterSlewRateLimiterOne = new SlewRateLimiter(1,-1,0);
     private SlewRateLimiter shooterSlewRateLimiterTwo = new SlewRateLimiter(1,-1,0);
