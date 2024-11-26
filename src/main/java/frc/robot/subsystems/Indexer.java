@@ -28,6 +28,9 @@ public class Indexer extends SubsystemBase{
     public Command IndexerBackward(){
         return this.run(() -> setIndexerMotorReverse()); 
     }
+    public Command IndexForwardForTime(double time){
+         return this.run(() -> setIndexerMotorForward()).withTimeout(time);
+    }
         }
 
 

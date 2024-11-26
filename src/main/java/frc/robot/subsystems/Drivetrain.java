@@ -39,16 +39,6 @@ public class Drivetrain extends SubsystemBase{
     public void teleDrive(double moveSpeed, double turnSpeed){
         diffDrive.arcadeDrive(moveSpeed, turnSpeed);
      }
-   
-    public  DifferentialDrive diffDrive = new DifferentialDrive(
-    (double output) -> {
-        frontLeft.set(output);
-        backLeft.set(output);
-    },
-    (double output) -> {
-        frontRight.set(output);
-        backRight.set(output);
-    });
 
     public void driveStraight(double speed){
         frontLeft.set(speed);

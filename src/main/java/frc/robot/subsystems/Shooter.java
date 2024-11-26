@@ -14,15 +14,19 @@ public class Shooter extends SubsystemBase{
     CCSparkMax lowerShooter = new CCSparkMax("lowerShooter", "ls", 0, MotorType.kBrushless, IdleMode.kCoast, false);
     CCSparkMax upperShooter = new CCSparkMax("upperShooter", "us", 0, MotorType.kBrushless, IdleMode.kCoast, true);
     
-    private SlewRateLimiter shooterSlewRateLimiter = new SlewRateLimiter(1,-1,0);
+    private SlewRateLimiter shooterSlewRateLimiterOne = new SlewRateLimiter(1,-1,0);
+    private SlewRateLimiter shooterSlewRateLimiterTwo = new SlewRateLimiter(1,-1,0);
 
     public void setShooterSpeed(double speed){
-        lowerShooter.set(shooterSlewRateLimiter.calculate(speed));
-        upperShooter.set(shooterSlewRateLimiter.calculate(speed));
+        lowerShooter.set(shooterSlewRateLimiterOne.calculate(speed));
+        upperShooter.set(shooterSlewRateLimiterTwo.calculate(speed));
     }
 
-    public Command shoot(double speed){
-        return this.runOnce(() -> setShooterSpeed(speed));
+    public Command rev(double speed){
+        return this.run(() -> setShooterSpeed(speed));
+    }
+    public Command revForTime(double speed, double time){
+        return this.run(() -> setShooterSpeed(speed)).withTimeout(time);
     }
 
     public Command halt(){
