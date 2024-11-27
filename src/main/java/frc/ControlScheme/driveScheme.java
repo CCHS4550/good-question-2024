@@ -13,6 +13,6 @@ public class driveScheme implements ControlScheme{
         SlewRateLimiter xLimit = new SlewRateLimiter(0.5);
         SlewRateLimiter yLimit = new SlewRateLimiter(0.5);
         driveTrain.setDefaultCommand(
-            new RunCommand(()-> driveTrain.teleDrive(xLimit.calculate(-controller.getLeftX()), -controller.getRightY())));
+            new RunCommand(()-> driveTrain.teleDrive(xLimit.calculate(-controller.getLeftX()), -controller.getRightY()), driveTrain));
     }
 }

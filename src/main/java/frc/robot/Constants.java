@@ -17,13 +17,13 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
     public static final int kMechanismControllerPort = 1;
     public static final int FLdeviceID = 3;
-    public static final int FRdeviceID = 7;
+    public static final int FRdeviceID = 8;
     public static final int BLdeviceID = 4;
-    public static final int BRdeviceID = 8;
-    public static final int IMdeviceID = 5;
+    public static final int BRdeviceID = 7;
+    public static final int IMdeviceID = 6;
     public static final int IntakeTopID = 1;
     public static final int IntakeBottomID = 2;
-    public static final int ShooterOneID = 6;
+    public static final int ShooterOneID = 5;
     public static final int ShooterTwoID = 9;
     public static final boolean FLReverse = false;
     public static final boolean FRReverse = false;

@@ -27,22 +27,28 @@ public class mechanismScheme implements ControlScheme {
             sequence(
                  waitSeconds(2.25),
                 indexer.IndexForwardForTime(0.5)
+                
             )
         );
 
 
         //run intake
         buttonBoard.button(1).whileTrue(intake.intakeIn());
+        buttonBoard.button(1).whileFalse(intake.intakeStop());
         //run outake
         buttonBoard.button(2).whileTrue(intake.intakeOut());
+        buttonBoard.button(2).whileFalse(intake.intakeStop());
         //toggle rev shooter
-        buttonBoard.button(3).toggleOnTrue(shooter.rev(0.8));
+        buttonBoard.button(11).whileTrue(shooter.rev(0.8));
+        buttonBoard.button(11).whileFalse(shooter.rev(0));
         //index in
-        buttonBoard.button(4).whileTrue(indexer.IndexerForward());
+        buttonBoard.button(12).whileTrue(indexer.IndexerForward());
+        buttonBoard.button(12).whileFalse(indexer.IndexStopper());
         //index out
         buttonBoard.button(5).whileTrue(indexer.IndexerBackward());
+        buttonBoard.button(5).whileFalse(indexer.IndexStopper());
         //shoot
-        buttonBoard.button(6).onTrue(shoot);
+        // buttonBoard.button(6).onTrue(shoot);
         
         
     }
