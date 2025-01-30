@@ -14,11 +14,11 @@ public class Intake extends SubsystemBase{
     CCSparkMax intakeTop = new CCSparkMax("Intake Top", "IT", Constants.OperatorConstants.IntakeTopID, MotorType.kBrushless, IdleMode.kCoast, false);
     CCSparkMax intakeBottom = new CCSparkMax("Intake Motor", "IB", Constants.OperatorConstants.IntakeBottomID, MotorType.kBrushless, IdleMode.kCoast, true);
 
-    SlewRateLimiter oneLimit = new SlewRateLimiter(1,-1,0);
-    SlewRateLimiter twoLimit = new SlewRateLimiter(1,-1,0);
+    SlewRateLimiter oneLimit = new SlewRateLimiter(0.2,-1,0);
+    SlewRateLimiter twoLimit = new SlewRateLimiter(0.2,-1,0);
     public void motorIn(){
-    intakeTop.set(oneLimit.calculate(0.2));
-    intakeBottom.set(twoLimit.calculate(0.3));
+    intakeTop.set(oneLimit.calculate(0.3));
+    intakeBottom.set(twoLimit.calculate(0.15));
 }
 public void motorOut(){
     intakeTop.set(oneLimit.calculate(-0.2));

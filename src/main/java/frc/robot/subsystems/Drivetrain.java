@@ -3,6 +3,9 @@ package frc.robot.subsystems;
 
 
 
+import static edu.wpi.first.wpilibj2.command.Commands.deadline;
+import static edu.wpi.first.wpilibj2.command.Commands.waitSeconds;
+
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -41,9 +44,9 @@ public class Drivetrain extends SubsystemBase{
      }
 
     public void driveStraight(double speed){
-        frontLeft.set(speed);
+        frontLeft.set(-speed);
         frontRight.set(speed);
-        backLeft.set(speed);
+        backLeft.set(-speed);
         backRight.set(speed);
     }
     public void turnDirection(boolean direction, double speed){
@@ -62,13 +65,18 @@ public class Drivetrain extends SubsystemBase{
     }
     
     public Command basicDrive (double speed){
-        return this.run(()-> driveStraight(speed));
+        return this.runEnd(()-> driveStraight(speed), ()->driveStraight(0));
     }
     public Command basicTurn (boolean direction, double speed){
-        return this.run(()-> turnDirection(direction, speed));
+        return this.runEnd(()-> turnDirection(direction, speed), ()->driveStraight(0));
     }
     public Command controlledDrive(double movespeed, double turnSpeed){
         return run(()-> teleDrive(movespeed, turnSpeed));
     }
-
+    public Command autoDriveForward(double Speed, double Time){
+        return deadline(waitSeconds(Time), basicDrive(Speed)).withTimeout(Time);
+    }
+    public Command autoDriveTurn(double Speed, boolean Turn, double Time){
+        return deadline(waitSeconds(Time), basicTurn(Turn, Speed)).withTimeout(Time);
+    }
 }

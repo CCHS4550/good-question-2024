@@ -1,5 +1,8 @@
 package frc.robot.subsystems;
 
+import static edu.wpi.first.wpilibj2.command.Commands.deadline;
+import static edu.wpi.first.wpilibj2.command.Commands.waitSeconds;
+
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -22,14 +25,22 @@ public class Shooter extends SubsystemBase{
         lowerShooter.set(shooterSlewRateLimiterOne.calculate(speed));
         upperShooter.set(shooterSlewRateLimiterTwo.calculate(speed));
     }
-
+    public void setShortSpeed(){
+        lowerShooter.set(shooterSlewRateLimiterOne.calculate(0.2));
+        upperShooter.set(shooterSlewRateLimiterTwo.calculate(0.3));
+    }
     public Command rev(double speed){
-        return this.run(() -> setShooterSpeed(speed));
+        return this.runEnd(() -> setShooterSpeed(speed), () -> setShooterSpeed(0));
     }
     public Command revForTime(double speed, double time){
-        return this.runEnd(() -> setShooterSpeed(speed), () -> setShooterSpeed(0.0)).withTimeout(time);
+        return deadline(waitSeconds(time), rev(0.6)).withTimeout(time);
     }
-
+    public Command revForTimeShort(double speed, double time){
+        return deadline(waitSeconds(time), shortRev()).withTimeout(time);
+    }
+    public Command shortRev(){
+        return this.runEnd(()->setShortSpeed(), (()->setShooterSpeed(0)));
+    }
     public Command halt(){
         return Commands.runOnce(()-> {}, this);
     }

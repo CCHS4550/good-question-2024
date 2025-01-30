@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import frc.autos;
 import frc.ControlScheme.driveScheme;
 import frc.ControlScheme.mechanismScheme;
 import frc.robot.Constants.OperatorConstants;
@@ -62,6 +63,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(null);
+    return autos.moveForwardandShoot(driver, shooter, indexer);
   }
 }

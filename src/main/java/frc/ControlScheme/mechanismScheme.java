@@ -25,8 +25,8 @@ public class mechanismScheme implements ControlScheme {
         Command shoot = parallel(
             shooter.revForTime(0.8, 3.0),
             sequence(
-                 waitSeconds(2.25),
-                indexer.IndexForwardForTime(0.5)
+                 waitSeconds(2.25)
+                // indexer.IndexForwardForTime(0.5)
                 
             )
         );
@@ -38,9 +38,12 @@ public class mechanismScheme implements ControlScheme {
         //run outake
         buttonBoard.button(2).whileTrue(intake.intakeOut());
         buttonBoard.button(2).whileFalse(intake.intakeStop());
-        //toggle rev shooter
-        buttonBoard.button(11).whileTrue(shooter.rev(0.8));
-        buttonBoard.button(11).whileFalse(shooter.rev(0));
+        //toggle rev shooter long
+        buttonBoard.button(9).whileTrue(shooter.rev(0.6));
+        buttonBoard.button(9).whileFalse(shooter.rev(0));
+        //toggle rev shooter short
+        buttonBoard.button(10).whileTrue(shooter.shortRev());
+        buttonBoard.button(10).whileFalse(shooter.rev(0));
         //index in
         buttonBoard.button(12).whileTrue(indexer.IndexerForward());
         buttonBoard.button(12).whileFalse(indexer.IndexStopper());
